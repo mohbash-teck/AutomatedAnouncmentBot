@@ -1,0 +1,6 @@
+USER_ACADMIC_NUMBER = "45xxxxxx"
+USER_PASSWORD = "xxXxxxx"
+API_KEY = "API_TOKEN_FROM_GEMENI"
+TELEGRAM_BOT_TOKEN = "TELEGRAM_BOT_TOKEN"
+TELEGRAM_BOT_NAME = "@BOTNAME"
+MAIN_CHAT_ID = 1XXXXXX # this is the chat that you mainly want your bot to intract with
