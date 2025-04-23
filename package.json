@@ -1,12 +1,25 @@
 {
-  "name": "automatedanouncmentbot",
+  "name": "whatsapp_bot",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "telebot": "node ./scripts/AnouncmentTeleBot.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.0",
+    "axios": "^1.8.4",
+    "dotenv": "^16.5.0",
+    "env": "^0.0.2",
+    "grammy": "^1.36.1",
+    "node-cron": "^3.0.3",
+    "puppeteer": "^24.6.1",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.27.0"
+  }
 }
