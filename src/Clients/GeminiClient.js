@@ -1,5 +1,5 @@
 
-// gemini Client
+// gemini Client constructed here
 
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const dotenv = require("dotenv");

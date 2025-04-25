@@ -1,0 +1,2 @@
+
+// start all bots
