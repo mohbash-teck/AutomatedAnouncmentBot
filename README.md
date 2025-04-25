@@ -64,3 +64,9 @@ project/
         - database  # i should remove this after create a real db
             - Anouncments.json
 ```
+
+#pm2
+
+```
+pm2 start app.js --name telebots
+```

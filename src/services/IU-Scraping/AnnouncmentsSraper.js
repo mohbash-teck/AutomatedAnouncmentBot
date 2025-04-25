@@ -58,6 +58,7 @@ async function FetchNewAnouncments() {
 
      // Open Blackboard in new tab
     try {
+        console.log("opening blackboard page ...");
         const [newPage] = await Promise.all([
             new Promise(resolve => {
                 page.browser().once('targetcreated', async target => {

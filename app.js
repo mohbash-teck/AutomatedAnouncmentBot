@@ -15,8 +15,15 @@ const mainchatid = process.env.MAIN_CHAT_ID
 // start the AnouncmentsBot
 AnnouncmentsBot.start();
 
+// setup the the commands of the bot
+AnnouncmentsBot.command("start", () => {
+    console.log("new session to the bot");
+})
+AnnouncmentsBot.command("scrap", () => {
+    IuBbAnnouncmentsScrapingController(AnnouncmentsBot,mainchatid);
+})
+
 OnMessageSmartAiReplyController(AnnouncmentsBot,mainchatid);
-IuBbAnnouncmentsScrapingController(AnnouncmentsBot,mainchatid);
 
 // set the daliy routine for scraping Announcments
 corn.schedule("00 12 * * *", async () => {
