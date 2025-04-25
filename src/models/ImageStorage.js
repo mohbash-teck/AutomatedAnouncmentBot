@@ -7,7 +7,7 @@ const fs = require("fs");
  * @param {*} filename 
  * @returns base64 string representaion of the capcha code image
  */
-function saveBase64ImageOfCaptchaCode(base64Data, filename) {
+function SaveBase64ImageOfCaptchaCode(base64Data) {
     const base64 = base64Data.split(',')[1];
   
     // Convert base64 to buffer
@@ -15,10 +15,11 @@ function saveBase64ImageOfCaptchaCode(base64Data, filename) {
 
     // Save the buffer to a file
     // i store the image for debugging purpose
+    const filename = "./src/screenshots/Capcha.png"
     fs.writeFileSync(filename, buffer);
 
     // return the row endcoded string of the image
     return base64;
 };
 
-modules.export = {saveBase64ImageOfCaptchaCode};
+module.exports = {SaveBase64ImageOfCaptchaCode};

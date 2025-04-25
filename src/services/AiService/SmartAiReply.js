@@ -1,7 +1,7 @@
 
 // any kind of ai text reply logic written here
 
-const {GeminiClient} = require("../clients/GeminiClient.js");
+const {GeminiClient} = require("../../Clients/GeminiClient");
 
 async function SmartReply(prompt) {
     const protectionprompt = `try to response with less than 1000 words to this prompt: ${prompt}`
@@ -18,4 +18,4 @@ async function GetGptChat() {
   return chat;
 }
 
-module.exports = {SmartReply, GptChat};
+module.exports = {SmartReply, GetGptChat};

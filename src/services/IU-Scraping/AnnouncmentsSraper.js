@@ -1,10 +1,11 @@
 
-const puppeteer = require("puppeteer");
-const fs = require("fs");
-const {ExtractCapchaCode} = require("./services/Aiservice/GenerativeAIEntegration.js");
-const {StoreAnouncments} = require("../../models/Announcments.js");
-const {saveBase64ImageOfCaptchaCode} = require("../../models/ImageStorage.js");
 
+const puppeteer = require("puppeteer");
+const {SaveBase64ImageOfCaptchaCode} = require("../../models/ImageStorage.js");
+const {StoreAnouncments} = require("../../models/Announcments.js");
+const {ExtractCapchaCode} = require("../AiService/ImageProcess.js");
+
+console.log(typeof SaveBase64ImageOfCaptchaCode);
 
 /**
  * - acuall scraping logic of the Black board annoucments in this func
@@ -30,9 +31,9 @@ async function FetchNewAnouncments() {
         await browser.close();
         return false;
     }
-
-    const encodedCaptcha = await saveBase64ImageOfCaptchaCode(CaptchaImage, "../screenshots/capcha.png");
-    const CaptcaCode = await ExtractCapchaCode(encodedCaptcha);
+    
+    const CaptcaCodeBase64String = SaveBase64ImageOfCaptchaCode(CaptchaImage);
+    const CaptcaCode = await ExtractCapchaCode(CaptcaCodeBase64String);
     console.log(`Captcha code: ${CaptcaCode}`);
 
      try {
@@ -47,7 +48,7 @@ async function FetchNewAnouncments() {
     }
 
      try {
-        await page.waitForSelector('a.system[href="https://iu.blackboard.com"]', { timeout: 10000 });
+        await page.waitForSelector('a.system[href="https://iu.blackboard.com"]', { timeout: 50000 });
         console.log("Dashboard loaded");
     } catch {
         console.log("⌛ Dashboard did not load in time");
@@ -84,7 +85,7 @@ async function FetchNewAnouncments() {
         }
 
          // Screenshot for debug
-        await newPage.screenshot({ path: "./logs/images/debugBbtab.png", fullPage: true });
+        await newPage.screenshot({ path: "./src/screenshots/bb.png", fullPage: true });
 
          const announcements = await newPage.evaluate(() => {
             const data = {};

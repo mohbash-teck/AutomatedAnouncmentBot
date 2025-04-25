@@ -2,18 +2,15 @@
 // gemini Client constructed here
 
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const dotenv = require("dotenv");
+const {Gemini} = require("../config/AI");
 
-// config the env variables
-dotenv.config()
-
-class GeminiClient {
+class GeminiClientConstructor {
     constructor() {
-        const ApiKey = process.env.API_KEY || "MY_API_KEY";
+        const ApiKey = Gemini.ApiToken || "MY_API_KEY";
         this.genAI = new GoogleGenerativeAI(ApiKey);
-        this.model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+        this.model = this.genAI.getGenerativeModel({ model: Gemini.Model });
     }
-}
+};
 
-GeminiClient =GeminiClient()
-modules.export = {GeminiClient}
+GeminiClient = new GeminiClientConstructor();
+module.exports = {GeminiClient};

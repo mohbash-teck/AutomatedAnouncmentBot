@@ -5,9 +5,5 @@
 const {Bot} = require("grammy");
 const {telegram} = require("../../config/ActiveBots");  // this object contain the meatdata of all telegram bots
 
-const AnouncmentsBot = new Bot(telegram.AnouncmentsBot.BotToken);
-
-// bot start
-AnouncmentsBot.start();
-
-module.exports = {AnouncmentsBot};
+const AnnouncmentsBot = new Bot(telegram.AnnouncmentsBot.BotToken);
+module.exports = {AnnouncmentsBot};

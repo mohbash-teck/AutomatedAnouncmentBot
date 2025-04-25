@@ -1,8 +1,9 @@
 
-modules.export = {
+module.exports = {
     Gemini: {
-        provider: "Google",
+        Provider: "Google",
         ApiToken: process.env.API_KEY,
-        model: "gemini-2.0-flash"
+        Model: "gemini-2.0-flash",
+        Enabled: true
     }
 }

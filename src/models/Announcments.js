@@ -6,7 +6,7 @@ const fs = require("fs");
 async function StoreAnouncments(announcements) {
     try{
         if (Object.keys(announcements).length > 0) {
-          fs.writeFileSync('../database/announcments/announcements.json', JSON.stringify(announcements, null, 2), 'utf-8');
+          fs.writeFileSync('./src/database/announcments/announcements.json', JSON.stringify(announcements, null, 2), 'utf-8');
             console.log('✅ Data saved as pretty JSON in announcements.json');
             await browser.close();
             return true;
@@ -22,4 +22,15 @@ async function StoreAnouncments(announcements) {
     }
 }
 
-modules.export = {StoreAnouncments};
+/**
+ * get the announcments from the db
+ * @return: announcments object
+ */
+function GetAnnouncments() {
+    
+    const rawData = fs.readFileSync('./src/database/announcments/announcements.json', 'utf-8');
+    const content = JSON.parse(rawData);
+    return content
+}
+
+module.exports = {StoreAnouncments, GetAnnouncments};

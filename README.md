@@ -44,8 +44,10 @@ project/
             - GeminiClient.js
             - TelegramClient.js
         - controller/
-            - SmartMessageReplyController.js
-            - ScrapAnoucmentsController.js
+            - telegramBots
+                - AnnouncmentsBot
+                    - messagesController.js
+                    - ScrapAnoucmentsController.js
         - models/
             - Anouncments.js    # store the scraped anouncments
         - views/
