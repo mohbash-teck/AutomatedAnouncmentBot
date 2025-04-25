@@ -19,8 +19,8 @@ AnnouncmentsBot.start();
 AnnouncmentsBot.command("start", () => {
     console.log("new session to the bot");
 })
-AnnouncmentsBot.command("scrap", () => {
-    IuBbAnnouncmentsScrapingController(AnnouncmentsBot,mainchatid);
+AnnouncmentsBot.command("scrap", async () => {
+    await IuBbAnnouncmentsScrapingController(AnnouncmentsBot,mainchatid);
 })
 
 OnMessageSmartAiReplyController(AnnouncmentsBot,mainchatid);
