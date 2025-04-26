@@ -2,25 +2,27 @@
 
 const {StartScraping} = require("../../services/IU-Scraping/AnnouncmentsSraper");
 const {GetAnnouncments} = require("../../models/Announcments");
-const {SendAnnouncments} = require("../../services/telegram/SendMessage");
+const {SendMessage, SendAnnouncments} = require("../../services/telegram/SendMessage");
 
 
 async function IuBbAnnouncmentsScrapingController(bot,chatid) {
 
     console.log("start scraping process ...");
+    await SendMessage(bot, chatid, "start process of Sraping New Announcments ...");
     const NewAnnouncmentAvailable = await StartScraping();
 
     if (NewAnnouncmentAvailable) {
-        console.log("start process of fetching New Announcments ...");
-        const NewAnnouncments = GetAnnouncments();
+        const NewAnnouncments = await GetAnnouncments();
 
         console.log("start the process of sending new Announcments ");
-        await SendAnnouncments(bot=bot, chatid=chatid,AnnouncementsObejct=NewAnnouncments);
+        SendAnnouncments(bot=bot, chatid=chatid,AnnouncementsObejct=NewAnnouncments);
 
         console.log("finished scraping and sending Announcments.");
 
     } else {
-        console.log("No New Announcments dedticted.");
+        const message = "No New Announcments dedticted."
+        console.log(message);
+        SendMessage(bot,chatid,message)
     }
 }
 
