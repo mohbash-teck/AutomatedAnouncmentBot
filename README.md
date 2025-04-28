@@ -70,3 +70,17 @@ project/
 ```
 pm2 start app.js --name telebots
 ```
+
+## enviroment variables
+
+```
+USER_ACADMIC_NUMBER_IU = "45XXXXXX"
+USER_PASSWORD_IU = "XXXXXXX"
+API_KEY_GEMINI = "XXXXXXXXXXXXXXXXXX"
+TELEGRAM_BOT_TOKEN = "XXXXXXXXXXXXXXXXXXXXXXXX"
+TELEGRAM_BOT_NAME = "@XXXXX"
+MAIN_CHAT_ID = XXXXXXXX # your chat id with the bot
+
+```
+
+note: you can find your chat id with the bot via:
