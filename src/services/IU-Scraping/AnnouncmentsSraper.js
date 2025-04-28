@@ -4,7 +4,7 @@ const puppeteer = require("puppeteer");
 const {SaveBase64ImageOfCaptchaCode} = require("../../models/ImageStorage.js");
 const {StoreAnouncments} = require("../../models/Announcments.js");
 const {ExtractCapchaCode} = require("../AiService/ImageProcess.js");
-
+const {Credentials} = require("../../config/IU.js");
 console.log(typeof SaveBase64ImageOfCaptchaCode);
 
 /**
@@ -38,8 +38,8 @@ async function FetchNewAnouncments() {
 
      try {
       // fill the required fields
-      await page.type('#Username', process.env.USER_NUMBER);
-      await page.type('#password', process.env.USER_PASSWORD);
+      await page.type('#Username', Credentials.ID);
+      await page.type('#password', Credentials.PASSWORD);
       await page.type('#CaptchaValue', CaptcaCode);
     } catch (error) {
         console.log("❌ Error filling fields:", error);

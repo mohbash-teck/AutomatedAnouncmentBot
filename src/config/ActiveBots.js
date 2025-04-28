@@ -12,6 +12,7 @@ module.exports = {
             MainChatId: process.env.MAIN_CHAT_ID,
             Enabled: true
         }
-    }
+    },
+    
     
 }
