@@ -8,7 +8,11 @@
  * @param {*} message 
  */
 async function SendMessage(bot,chatid,message) {
-    await bot.api.sendMessage(chatid,message);
+    await bot.api.sendMessage(
+        chatid,
+        message,
+        { parse_mode: "Markdown"}
+    );
 }
 
 /**

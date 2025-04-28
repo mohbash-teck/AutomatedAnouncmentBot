@@ -11,10 +11,11 @@ async function SmartReply(prompt) {
     return text
 };
 
-async function GetGptChat() {
+async function GetGptChat(psersona) {
   const chat = GeminiClient.model.startChat({
-    history: [], // Start fresh; or you can preload past messages here
-  });
+      role: "user",
+      parts: [{ text: psersona}]
+    });
   return chat;
 }
 

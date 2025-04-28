@@ -44,7 +44,7 @@ project/
             - GeminiClient.js
             - TelegramClient.js
         - controller/
-            - telegramBots
+            - telegram
                 - AnnouncmentsBot
                     - messagesController.js
                     - ScrapAnoucmentsController.js

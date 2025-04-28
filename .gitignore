@@ -1,2 +1,6 @@
 node_modules
 .env
+bb.png
+Capcha.png
+*.png
+announcements.json
