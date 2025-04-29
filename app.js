@@ -22,7 +22,7 @@ AnnouncmentsBot.command("start", () => {
     console.log("new session to the bot");
 })
 AnnouncmentsBot.command("scrap", async () => {
-    await IuBbAnnouncmentsScrapingController(AnnouncmentsBot,mainchatid);
+    IuBbAnnouncmentsScrapingController(AnnouncmentsBot,mainchatid);
 })
 
 const persona = "From now on your name is mohbash, you will act as my personal sekeratry\
@@ -31,7 +31,7 @@ i speak arabic and english, i study EE at IU in madinah"
 OnMessageAiChatController(AnnouncmentsBot,mainchatid, persona);
 
 // set the daliy routine for scraping Announcments
-corn.schedule("20 01 * * *", async () => {
+corn.schedule("00 12 * * *", async () => {
     console.log("start the first scheduled check routine ..")
     IuBbAnnouncmentsScrapingController(AnnouncmentsBot,mainchatid);
 });

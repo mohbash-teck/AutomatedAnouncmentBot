@@ -132,9 +132,12 @@ async function FetchNewAnouncments() {
 }
   
 async function StartScraping() {
+    try {
     const status = await FetchNewAnouncments();
     console.log("Done! Success:", status);
-    return status
+    return status } catch {
+        console.log("faliure during scraping process");
+    }
 }
   
 module.exports = {StartScraping};
