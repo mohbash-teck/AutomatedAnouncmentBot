@@ -1,7 +1,7 @@
 
 // any kind of ai text reply logic written here
 
-const {GeminiClient} = require("../../Clients/GeminiClient");
+const {GeminiClient} = require("../../Clients/AiClients/GeminiClient");
 
 async function SmartReply(prompt) {
   try{

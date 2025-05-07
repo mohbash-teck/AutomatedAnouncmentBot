@@ -1,7 +1,7 @@
 
 // any image processing via ai goes here
 
-const {GeminiClient} = require("../../Clients/GeminiClient");
+const {GeminiClient} = require("../../Clients/AiClients/GeminiClient");
 
 // photo that will be passed here is base64 string of the image
 async function ExtractCapchaCode(photo) {

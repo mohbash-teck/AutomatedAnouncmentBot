@@ -2,7 +2,7 @@
 // gemini Client constructed here
 
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const {Gemini} = require("../config/AI");
+const {Gemini} = require("../../config/AI");
 
 class GeminiClientConstructor {
     constructor() {

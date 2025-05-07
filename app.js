@@ -1,9 +1,9 @@
 
 const {AnnouncmentsBot} = require("./src/Clients/telegram/AnouncmentsBot.js");
-const {OnMessageController} = require("./src/controller/telegram/MessageController");
-const {IuBbAnnouncmentsScrapingController} = require("./src/controller/telegram/IuBbAnnouncmentsScrapingController");
-const {OnMessageSmartAiReplyController} = require("./src/controller/telegram/SmartReplyController");
-const { OnMessageAiChatController} = require("./src/controller/telegram/SmartReplyController");
+const {OnMessageController} = require("./src/controllers/telegram/MessageController");
+const {IuBbAnnouncmentsScrapingController} = require("./src/controllers/telegram/IuBbAnnouncmentsScrapingController");
+const {OnMessageSmartAiReplyController} = require("./src/controllers/telegram/SmartReplyController");
+const { OnMessageAiChatController} = require("./src/controllers/telegram/SmartReplyController");
 
 
 const corn = require("node-cron");

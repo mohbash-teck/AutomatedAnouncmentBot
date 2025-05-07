@@ -27,8 +27,9 @@ async function OnMessageAiChatController(bot, mainchatid, psersona) {
 
     bot.on("message", async (ctx) => {
         const message = ctx.message
+        console.log(`new message from ${message.chat.id} recieved`);
         if (message && mainchatid && mainchatid == message.chat.id) {
-            console.log(`new message from ${message.chat.id} recieved`);
+            // console.log(`new message from ${message.chat.id} recieved`);
             const prompt = `persona part:${psersona}\n\n  user request part: ${message.text}`
             const protectionprompt = `response with less than 1000 words to this prompt and \
             make sure the responce is for the user part not the instructions before \
