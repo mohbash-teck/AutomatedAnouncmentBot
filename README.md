@@ -1,28 +1,20 @@
-# BotsServerManager
+# BlackBoardAnnounncmentsBot
 
-in this project i tried to make well Strcured Bots Manager
+this is a simple project i made to give alternative solution for the BlackBoard Announncments problem.
 
 ## requirments
-
-- build a scalable server that can used to handle many bots (tele, whatsapp)
-- may i need to design an api for this service ?
+- build a scalable server that can used to handle many platforms (tele, whatsapp)
 - make architcure that satisfy seperation of consern(each service seperated and do one thing only)
 - apply software enginnering best practices
 
 ## features (utill now)
-
 - Ai chat bot # you can set the bot with costume persona to act as personal assisstant
-- Automated check for New Anouncments on the black board then send it via telegram bot # (IU website)
+- Automated check for New Announcments on the black board then send it via telegram bot # (IU website)
+- auto check every day at 12 am and 12 pm for new announcments (you can stop the schdule from the tele bot)
 
 ### clients:
-
 - Gemini Client
 - telegram bot
-- whatsapp client
-
-## models:
-
-Anouncments
 
 ## services:
 
@@ -33,45 +25,12 @@ Anouncments
    - SmartReply
    - Chat bot with costume persona
 
-### architcure
-
-i used simple MVC architcure to build this project
-
-```
-project/
-    - src/
-        - Clients/
-            - GeminiClient.js
-            - TelegramClient.js
-        - controller/
-            - telegram
-                - AnnouncmentsBot
-                    - messagesController.js
-                    - ScrapAnoucmentsController.js
-        - models/
-            - Anouncments.js    # store the scraped anouncments
-        - views/
-            - Anouncments.js
-            - AiMessageReply.js
-        - services/
-            - IUScraping
-                - AnouncmentsSraper.js
-            - AiService
-                - SmartAiReply.js
-                - ImageProccess.js
-        - screenshots/
-            - CapchaCodeImageIuWebsite.png
-        - database  # i should remove this after create a real db
-            - Anouncments.json
-```
-
 #pm2
-
 ```
 pm2 start app.js --name telebots
 ```
 
-## enviroment variables
+## enviroment variables needed
 
 ```
 USER_ACADMIC_NUMBER_IU = "45XXXXXX"
