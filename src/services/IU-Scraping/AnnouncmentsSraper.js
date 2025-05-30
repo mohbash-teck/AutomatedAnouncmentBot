@@ -17,9 +17,13 @@ async function FetchNewAnouncments() {
     const page = await browser.newPage();
     console.log("New tab created.");
 
+    // Set a fake Firefox user agent to bypass bot detection
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0');
+
     await page.goto("https://eservices.iu.edu.sa/Dashboard");
     console.log("Login page opened.");
 
+    await page.screenshot({ path: './src/screenshots/login_page.png', fullPage: true });
     const CaptchaImage = await page.evaluate(() => {
       // get the image of the captcha
       const image = document.getElementById("CaptchaImage");

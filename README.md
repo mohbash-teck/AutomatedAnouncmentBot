@@ -84,3 +84,13 @@ MAIN_CHAT_ID = XXXXXXXX # your chat id with the bot
 ```
 
 note: you can find your chat id with the bot via:
+
+## Install Required Chromium Dependencies
+```
+sudo apt update && sudo apt install -y \
+  libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 libasound2 \
+  libatk1.0-0 libatk-bridge2.0-0 libcups2 libdbus-1-3 libxss1 \
+  libnss3 libxext6 libxfixes3 libglib2.0-0 libxrender1 \
+  libfontconfig1 libgtk-3-0 ca-certificates fonts-liberation xdg-utils
+
+```
