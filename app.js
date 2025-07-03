@@ -32,10 +32,11 @@ const config = {
 // set the bot commands
 async function registerBotCommands(bot, chatId) {
   bot.command("start", () => {
-     SendMessageController(bot,chatId,"new user started the bot.");
+    SendMessageController(bot,chatId,"new user started the bot.");
   });  
 
   bot.command("scrap", async () => {
+    await SendMessageController(bot, chatId, "start process of Sraping New Announcments ...");
     await IuBbAnnouncmentsScrapingController(bot, chatId);
   });
 

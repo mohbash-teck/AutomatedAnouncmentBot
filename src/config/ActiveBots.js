@@ -4,7 +4,6 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 module.exports = {
-
     telegram: {
         AnnouncmentsBot: {
             BotName: process.env.TELEGRAM_BOT_NAME,
@@ -13,6 +12,4 @@ module.exports = {
             Enabled: true
         }
     },
-    
-    
 }

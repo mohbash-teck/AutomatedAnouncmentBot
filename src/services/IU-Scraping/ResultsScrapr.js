@@ -11,9 +11,9 @@ console.log(typeof SaveBase64ImageOfCaptchaCode);
  * - acuall scraping logic of the Black board annoucments in this func
  * @returns  return true if new announcments fetched other wise false (no announcments or error)
  */
-async function FetchNewAnouncments() {
+async function FetchResults() {
 
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
     console.log("New tab created.");
 
@@ -23,7 +23,7 @@ async function FetchNewAnouncments() {
     await page.goto("https://eservices.iu.edu.sa/Dashboard");
     console.log("Login page opened.");
 
-    await page.screenshot({ path: './src/screenshots/login_page.png', fullPage: true });
+    await page.screenshot({ path: './src/screenshots/login_page.png', fullPage: false });
     const CaptchaImage = await page.evaluate(() => {
       // get the image of the captcha
       const image = document.getElementById("CaptchaImage");
@@ -60,9 +60,9 @@ async function FetchNewAnouncments() {
         return false;
     }
 
-     // Open Blackboard in new tab
+     // Open acadmic system in new tab
     try {
-        console.log("opening blackboard page ...");
+        console.log("opening acadmic system page ...");
         const [newPage] = await Promise.all([
             new Promise(resolve => {
                 page.browser().once('targetcreated', async target => {
@@ -71,9 +71,10 @@ async function FetchNewAnouncments() {
                     resolve(newTab);
                 });
             }),
-            page.click('a.system[href="https://iu.blackboard.com"]'),
+            page.click('a.system[https://cas.iu.edu.sa/cas/eregister"]'),
         ]);
 
+        
          //  wait for page load or selector cause it is sometimes take too long in the page
         // i mean it may be loaded but with message: wait unitl fully load (its like fast loaded content till the acuall content loaded)
         // thats why i give it more time
@@ -137,12 +138,12 @@ async function FetchNewAnouncments() {
   
 async function StartScraping() {
     try {
-    const status = await FetchNewAnouncments();
+    const status = await FetchResults();
     console.log("Done! Success:", status);
     return status } catch {
         console.log("faliure during scraping process");
     }
 }
   
-module.exports = {StartScraping};
+StartScraping()
   
