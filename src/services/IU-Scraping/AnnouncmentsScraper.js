@@ -303,6 +303,72 @@ async function FetchNewAnouncmentsV2() {
     }
 }
 
+
+
+async function passLoginPage() {
+    const browser = await puppeteer.launch({ headless: false }); // Keep headless: false for visual debugging
+    const page = await browser.newPage();
+    console.log("New tab created.");
+
+    // Set a fake Firefox user agent to bypass bot detection
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0');
+
+    try 
+    {
+        await page.goto("https://eservices.iu.edu.sa/Dashboard");
+        console.log("Login page opened.");
+
+        await page.screenshot({ path: './src/screenshots/login_page.png', fullPage: true });
+        const CaptchaImage = await page.evaluate(() => {
+            // Get the image of the captcha
+            const image = document.getElementById("CaptchaImage");
+            return image?.src;
+        });
+
+        if (!CaptchaImage) {
+            console.log("Captcha image not found.");
+            await browser.close();
+            return false;
+        }
+
+        const CaptcaCodeBase64String = SaveBase64ImageOfCaptchaCode(CaptchaImage);
+        const CaptcaCode = await ExtractCapchaCode(CaptcaCodeBase64String);
+        console.log(`Captcha code: ${CaptcaCode}`);
+
+        try {
+            // Fill the required fields
+            await page.type('#Username', Credentials.ID);
+            await page.type('#password', Credentials.PASSWORD);
+            await page.type('#CaptchaValue', CaptcaCode);
+
+            // You might need a click event here if there's a submit button
+            // Example: await Promise.all([
+            //     page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 50000 }),
+            //     page.click('your_submit_button_selector')
+            // ]);
+
+        } catch (error) {
+            console.log("❌ Error filling fields:", error);
+            await browser.close();
+            return false;
+        }
+
+        try {
+            // Wait for the dashboard to load after login
+            await page.waitForNavigation({ waitUntil: 'networkidle0', timeout: 60000 });
+            console.log("Dashboard loaded.");
+        } catch (error) {
+            console.log(`⌛ Dashboard did not load in time or Blackboard link not found: ${error.message}`);
+            await browser.close();
+            return false;
+        }
+    }  catch(err){
+        console.log(`Error: ${err}`)
+    }
+
+}
+
+
 async function StartScraping() {
     try {
     const status = await FetchNewAnouncmentsV2();
@@ -312,5 +378,5 @@ async function StartScraping() {
     }
 }
  
-module.exports = {StartScraping};
+module.exports = {StartScraping, passLoginPage};
   
